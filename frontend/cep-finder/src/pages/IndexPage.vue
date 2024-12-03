@@ -10,7 +10,13 @@
         dense
         clearable
       />
-      <q-btn label="Buscar" @click="fetchCep" style="background-color: #40b494; color: #fff" class="full-width" />
+      <q-btn 
+        :disable="loading" 
+        label="Buscar" 
+        @click="fetchCep" 
+        style="background-color: #40b494; color: #fff" 
+        class="full-width" 
+      />
 
       <div class="q-mt-md">
         <q-card v-if="address">
@@ -26,7 +32,7 @@
           </q-card-section>
         </q-card>
 
-        <q-alert v-if="error" color="negative" class="q-mt-md" dense>{{ error }}</q-alert>
+        <q-alert v-if="error == null" color="negative" class="q-mt-md" dense>{{ error }}</q-alert>
 
         <q-spinner v-if="loading && !error" />
       </div>
@@ -62,43 +68,37 @@ const cep = ref('');
 const address = ref(null);
 const loading = ref(false);
 const error = ref(null);
-const recentCeps = ref([]);
+const recentCeps = ref([""]);
 
 const fetchCep = async () => {
+  cep.value = cep.value.replace(/\D/g, '');
+  loading.value = true;
   try {
-    loading.value = true;
-    error.value = null;
     const { data } = await axios.get(`http://localhost:8080/api/v1/cep/${cep.value}`);
     address.value = data;
-    loading.value = false;
     addCepToLocalStorage(cep.value);
   } catch (err) {
-    loading.value = false;
     error.value = 'CEP não encontrado ou inválido!';
-    address.value = null;
+  } finally {
+    loading.value = false;
   }
 };
 
 const loadRecentCeps = () => {
   const storedCeps = localStorage.getItem('recentCeps');
-  if (storedCeps) {
-    recentCeps.value = JSON.parse(storedCeps);
-  }
+  recentCeps.value = storedCeps ? JSON.parse(storedCeps) : [];
 };
 
 const addCepToLocalStorage = (newCep) => {
   if (!recentCeps.value.includes(newCep)) {
-    recentCeps.value.unshift(newCep);
-    if (recentCeps.value.length > 5) {
-      recentCeps.value.pop();
-    }
+    recentCeps.value = [newCep, ...recentCeps.value].slice(0, 5);
     localStorage.setItem('recentCeps', JSON.stringify(recentCeps.value));
   }
 };
 
 const fetchCepFromList = (cepFromList) => {
   cep.value = cepFromList;
-  fetchCep();
+  setTimeout(() => fetchCep(), 0);
 };
 
 const clearRecentCeps = () => {

@@ -3,7 +3,7 @@ WORKDIR /cepfinder
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build && ls -la /cepfinder/dist
+RUN npm run build
 
 FROM nginx:alpine
 COPY --from=build /cepfinder/dist/spa /usr/share/nginx/html
