@@ -1,41 +1,52 @@
-# Quasar App (cep-finder)
+# **CEP Finder**
 
-cep finder
+Este projeto consiste em uma aplicação web para consulta de CEP, utilizando um backend em **Spring Boot** e um frontend em **VueJS com Quasar**. A aplicação consome a API pública do [ViaCEP](https://viacep.com.br/) e implementa caching e conteinerização com **Docker**.
 
-## Install the dependencies
-```bash
-yarn
-# or
-npm install
-```
+## **Descrição**
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
+O **CEP Finder** foi desenvolvido para o teste técnico roboteasy
 
+---
 
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
+## **Tecnologias Utilizadas**
 
+### Frontend
+- VueJS
+- Quasar
+- Axios
 
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
+### Outros
+- Docker & Docker Compose
+- NGINX
+- ViaCEP API
 
+---
 
+## **Funcionalidades**
+- Consulta de CEPs.
+- Exibição de informações detalhadas do endereço:
+  - Rua
+  - Bairro
+  - Cidade
+  - Estado
+- Caching para evitar múltiplas consultas à mesma informação.
+- Tratamento de erros para CEPs inválidos ou não encontrados.
 
-### Build the app for production
-```bash
-quasar build
-```
+---
+#### **Frontend**
+1. Certifique-se de ter o **Node.js** e o **npm** instalados.
+2. Navegue para a pasta do frontend:
+   ```bash
+   cd frontend
+   ```
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
+4. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
+5. O frontend estará disponível em: [http://localhost:9000](http://localhost:9000)
 
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+---
