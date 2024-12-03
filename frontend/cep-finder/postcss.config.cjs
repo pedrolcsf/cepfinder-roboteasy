@@ -2,6 +2,15 @@
 // https://github.com/michael-ciniawsky/postcss-load-config
 
 module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#1E88E5',
+        'secondary': '#FFC107',
+        'accent': '#9C27B0',
+      }
+    }
+  },
   plugins: [
     // https://github.com/postcss/autoprefixer
     require('autoprefixer')({

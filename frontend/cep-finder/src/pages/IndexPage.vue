@@ -10,7 +10,7 @@
         dense
         clearable
       />
-      <q-btn label="Buscar" @click="fetchCep" color="primary" class="full-width" />
+      <q-btn label="Buscar" @click="fetchCep" style="background-color: #40b494; color: #fff" class="full-width" />
 
       <div class="q-mt-md">
         <q-card v-if="address">
@@ -43,6 +43,13 @@
           </q-card-section>
         </q-card>
       </div>
+
+      <q-btn 
+        label="Limpar Histórico" 
+        @click="clearRecentCeps" 
+        style="background-color: #e74c3c; color: #fff" 
+        class="full-width q-mt-md" 
+      />
     </div>
   </q-page>
 </template>
@@ -94,6 +101,11 @@ const fetchCepFromList = (cepFromList) => {
   fetchCep();
 };
 
+const clearRecentCeps = () => {
+  localStorage.removeItem('recentCeps');
+  recentCeps.value = [];
+};
+
 onMounted(loadRecentCeps);
 </script>
 
@@ -112,7 +124,7 @@ onMounted(loadRecentCeps);
 }
 
 .text-h6 {
-  color: #1a73e8;
+  color: #004f71;
 }
 
 .text-subtitle2 {

@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated style="background: #004f71;">
       <q-toolbar>
         <q-toolbar-title>
           CEP Finder
