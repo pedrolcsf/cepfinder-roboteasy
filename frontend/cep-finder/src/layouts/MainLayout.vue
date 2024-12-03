@@ -6,7 +6,7 @@
           CEP Finder
         </q-toolbar-title>
 
-        <div>CEP FINDER v{{ $q.version }}</div>
+        <div>Teste técnico - Roboteasy</div>
       </q-toolbar>
     </q-header>
 
