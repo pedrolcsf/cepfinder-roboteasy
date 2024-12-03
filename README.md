@@ -72,7 +72,7 @@ O **CEP Finder** foi desenvolvido para o teste técnico roboteasy
    ```
 3. Execute o Docker Compose:
    ```bash
-   docker-compose up --build
+   docker-compose up --build -d
    ```
 4. Acesse o aplicativo em: [http://localhost](http://localhost) (porta 80)
 
