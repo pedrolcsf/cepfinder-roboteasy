@@ -26,7 +26,6 @@ O **CEP Finder** foi desenvolvido para o teste técnico roboteasy
 ### Backend
 - Java 17
 - Spring Boot
-- Spring Cache
 - REST API
 - Maven
 
@@ -83,16 +82,20 @@ O **CEP Finder** foi desenvolvido para o teste técnico roboteasy
 
 #### **Backend**
 1. Certifique-se de ter o **Java 17** e o **Maven** instalados.
-2. Navegue para a pasta do backend:
-   ```bash
-   cd backend
-   ```
-3. Compile e inicie o servidor:
-   ```bash
-   mvn clean install
-   java -jar target/cep-app.jar
-   ```
-4. O backend estará disponível em: [http://localhost:8080](http://localhost:8080)
+2. Abra o projeto no **IntelliJ IDEA**:
+   - No IntelliJ, clique em **File > Open** e selecione a pasta do backend.
+   - Aguarde o IntelliJ sincronizar o projeto Maven automaticamente.
+3. Para compilar e executar o servidor:  
+   - Abra a classe principal (geralmente contém a anotação `@SpringBootApplication`) (RestApiApplication).  
+   - Clique no ícone de "Play" ao lado do método `main`.  
+4. O backend estará disponível em: [http://localhost:8080](http://localhost:8080)  
+
+Se preferir usar o terminal:  
+```bash
+cd backend
+mvn clean install
+java -jar target/cep-app.jar
+```  
 
 #### **Frontend**
 1. Certifique-se de ter o **Node.js** e o **npm** instalados.
